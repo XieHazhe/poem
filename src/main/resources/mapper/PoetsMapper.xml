@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.poem.dao.PoetsDao" >
+    <select id="selectAll" resultMap="resultMap">
+        select p2.id id, p1.name name, p2.created_at created, p2.updated_at updated, p2.content content, p2.title title
+        from poets p1
+                 inner join poetries p2 on p1.id = p2.poet_id;
+    </select>
+    <resultMap id="resultMap" type="com.baizhi.poem.entity.PoemDTO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="created" column="created"/>
+        <result property="content" column="content"/>
+        <result property="update" column="updated"/>
+        <result property="title" column="title"/>
+    </resultMap>
+</mapper>
